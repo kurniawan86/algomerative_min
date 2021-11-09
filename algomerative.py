@@ -8,28 +8,24 @@ Created on Sat Aug 14 13:19:29 2021
 from cluster import classCluster
 class algomerative:
     cs=classCluster()
-    tipe=None
-    nCluster=9
+    tipe = 'min'
     
-    def __init__(self,nCluster,tipe):
-        self.nCluster=nCluster
-        self.tipe=tipe
+    def __init__(self,nCluster):
+        self.nCluster = nCluster
         self.iterative()
     
     def iterative(self):
-        cluster=self.cs.getClusterIndex()
-        n=len(cluster)
-        print(n)
+        cluster = self.cs.getClusterIndex()
+        n = len(cluster)
+        print("proses iterasi ke - ", 0)
         print(cluster)
+        print("")
         
         #loop all cluster
         for k in range (n-self.nCluster):
-            if self.tipe=='min':
-                i,j=self.cs.findMinIndxCluster()
-            elif self.tipe=='max':
-                i,j=self.cs.findMaxIndxCluster()
+            if self.tipe == 'min':
+                i,j = self.cs.findMinIndxCluster()
             self.cs.joinCluster(i, j)
+            print("proses iterasi ke - ",k+1)
             print(cluster)
-
-nCluster=3
-algo=algomerative(nCluster,'min')
+            print("")
